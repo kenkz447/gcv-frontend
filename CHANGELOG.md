@@ -243,16 +243,16 @@ This changelog is manually generated and not accurate with the package.json, onl
     You can import without using relative path
 
     ```tsx
-    import Nav from '../../../components/Nav';
+    import Nav from '../../../@/ui/admin/components/display/Nav';
 
     simplified to
 
-    import Nav from '@/components/Nav';
+    import Nav from '@/@/ui/admin/components/display/Nav';
     ```
 
 - #### Seo Component
 
-    Configure the default in `src/components/Seo.tsx`. If you want to use the default, just add `<Seo />` on top of your page.
+    Configure the default in `src/@/ui/admin/components/display/Seo.tsx`. If you want to use the default, just add `<Seo />` on top of your page.
 
     You can also customize it per page by overriding the title, description as props
 
@@ -314,7 +314,7 @@ Snippets: `np`
 
 ```tsx
 import * as React from 'react';
-import Seo from '@/components/Seo';
+import Seo from '@/@/ui/admin/components/display/Seo';
 export default function TestPage() {
   return (
     <>

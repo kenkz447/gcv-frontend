@@ -14,16 +14,33 @@
     "test": "jest",
     "format": "prettier -w .",
     "format:check": "prettier -c .",
-    "postbuild": "next-sitemap --config next-sitemap.config.js",
+    "postbuild": "next-sitemap --config next-sitemap.@/ui/admin/uiConfig.js",
     "prepare": "husky install"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.3",
+    "@types/styled-jsx": "^3.4.4",
+    "bootstrap": "^5.2.3",
     "clsx": "^1.2.1",
+    "formik": "^2.2.9",
     "next": "^13.2.4",
+    "next-seo": "^5.15.0",
+    "node-sass-middleware": "^1.0.1",
+    "overlayscrollbars": "^2.1.0",
+    "overlayscrollbars-react": "^0.5.0",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0",
+    "react-fuzzy-highlighter": "^1.1.1",
     "react-icons": "^4.8.0",
-    "tailwind-merge": "^1.10.0"
+    "react-intl": "^6.3.0",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.1",
+    "reduxjs-toolkit-persist": "^7.2.1",
+    "styled-jsx": "^5.1.2",
+    "styled-jsx-plugin-sass": "^1.0.0",
+    "tailwind-merge": "^1.10.0",
+    "yup": "^1.0.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.3.0",
@@ -49,6 +66,7 @@
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.1.13",
+    "sass": "^1.59.3",
     "tailwindcss": "^3.2.7",
     "typescript": "^4.9.5"
   },

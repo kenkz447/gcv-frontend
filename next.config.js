@@ -15,7 +15,7 @@ const nextConfig = {
   // },
 
   // SVGR
-  webpack(config) {
+  webpack(config, { defaultLoaders }) {
     config.module.rules.push({
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,
@@ -25,6 +25,19 @@ const nextConfig = {
           options: {
             typescript: true,
             icon: true,
+          },
+        },
+      ],
+    });
+
+    config.module.rules.push({
+      test: /\.(scss)$/,
+      use: [
+        defaultLoaders.babel,
+        {
+          loader: require('styled-jsx/webpack').loader,
+          options: {
+            type: 'global',
           },
         },
       ],
