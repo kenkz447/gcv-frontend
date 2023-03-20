@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Col } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 
-import routesAndMenuItems from '@/ui/routes.js';
+import routesAndMenuItems from '@/ui/admin/routes.js';
 import { getMenuItems } from '@/ui/routing/helper';
 
 import SidebarMenuItems from './SidebarMenuItems';

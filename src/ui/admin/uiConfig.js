@@ -1,6 +1,5 @@
-import { LAYOUT, MENU_BEHAVIOR, MENU_PLACEMENT, NAV_COLOR, RADIUS, THEME_COLOR, USER_ROLE } from '@/ui/admin/uiConstants.js';
+import { LAYOUT, MENU_BEHAVIOR, MENU_PLACEMENT, NAV_COLOR, RADIUS, THEME_COLOR } from '@/ui/admin/uiConstants.js';
 
-export const IS_DEMO = true;
 export const IS_AUTH_GUARD_ACTIVE = true;
 export const SERVICE_URL = '/app';
 export const USE_MULTI_LANGUAGE = true;
@@ -31,14 +30,6 @@ export const DEFAULT_SETTINGS = {
   COLOR: THEME_COLOR.LightRed,
   NAV_COLOR: NAV_COLOR.Default,
   USE_SIDEBAR: false,
-};
-
-export const DEFAULT_USER = {
-  id: 1,
-  name: 'Lisa Jackson',
-  thumb: '/img/profile/profile-9.webp',
-  role: USER_ROLE.Admin,
-  email: 'lisajackson@gmail.com',
 };
 
 export const REDUX_PERSIST_KEY = 'starter-project';

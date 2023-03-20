@@ -6,7 +6,7 @@ import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 
 import { USE_MULTI_LANGUAGE } from '@/ui/admin/uiConfig.js';
-import routesAndMenuItems from '@/ui/routes.js';
+import routesAndMenuItems from '@/ui/admin/routes.js';
 import { getSearchItems } from '@/ui/routing/helper';
 
 const RESULT_LIMIT = 10;

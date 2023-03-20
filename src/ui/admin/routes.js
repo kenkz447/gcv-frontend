@@ -13,4 +13,5 @@ const routesAndMenuItems = {
   ],
   sidebarItems: [],
 };
+
 export default routesAndMenuItems;

@@ -3,11 +3,11 @@ import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { layoutShowingNavMenu } from '@/ui/admin/layout/layoutSlice';
+import routesAndMenuItems from '@/ui/admin/routes';
 import { MENU_BEHAVIOR, MENU_PLACEMENT } from '@/ui/admin/uiConstants.js';
 import { useWindowScroll } from '@/ui/hooks/useWindowScroll';
 import { useWindowSize } from '@/ui/hooks/useWindowSize';
-import { layoutShowingNavMenu } from '@/ui/admin/layout/layoutSlice';
-import routesAndMenuItems from '@/ui/routes.js';
 import { getMenuItems } from '@/ui/routing/helper';
 
 import { checkBehaviour, checkPlacement, isDeeplyDiffBehaviourStatus, isDeeplyDiffPlacementStatus } from './helper';
@@ -34,7 +34,7 @@ const MainMenu = () => {
       getMenuItems({
         data: attrMobile && useSidebar ? routesAndMenuItems : routesAndMenuItems.mainMenuItems,
         isLogin,
-        userRole: currentUser.role,
+        userRole: currentUser?.role,
       }),
     [isLogin, currentUser, attrMobile, useSidebar]
   );

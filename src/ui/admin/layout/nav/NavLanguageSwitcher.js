@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { changeLang } from '@/ui/lang/langSlice';
+import { changeLang } from '@/ui/lang/langReducer';
 import { layoutShowingNavMenu } from '@/ui/admin/layout/layoutSlice';
 import { MENU_PLACEMENT } from '@/ui/admin/uiConstants.js';
 
