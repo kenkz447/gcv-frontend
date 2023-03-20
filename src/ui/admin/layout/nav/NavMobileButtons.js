@@ -2,9 +2,12 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import ScrollspyMobile from '@/ui/admin/components/display/scrollspy/ScrollspyMobile';
-import CsLineIcons from '@/ui/cs-line-icons/CsLineIcons';
+import { CsLineIcons } from '@/ui/cs-line-icons';
 
-import { menuChangeAttrMobile, menuChangeNavClasses } from './main-menu/menuSlice';
+import {
+  menuChangeAttrMobile,
+  menuChangeNavClasses,
+} from './main-menu/menuSlice';
 
 const NavMobileButtons = () => {
   const dispatch = useDispatch();
@@ -79,10 +82,17 @@ const NavMobileButtons = () => {
   }, [navClasses]);
 
   return (
-    <div className="mobile-buttons-container">
-      {scrollspyItems && scrollspyItems.length > 0 && <ScrollspyMobile items={scrollspyItems} />}
-      <a href="#/" id="mobileMenuButton" className="menu-button" onClick={showMobileMenu}>
-        <CsLineIcons icon="menu" />
+    <div className='mobile-buttons-container'>
+      {scrollspyItems && scrollspyItems.length > 0 && (
+        <ScrollspyMobile items={scrollspyItems} />
+      )}
+      <a
+        href='#/'
+        id='mobileMenuButton'
+        className='menu-button'
+        onClick={showMobileMenu}
+      >
+        <CsLineIcons icon='menu' />
       </a>
     </div>
   );

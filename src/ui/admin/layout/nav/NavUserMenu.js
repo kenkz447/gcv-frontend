@@ -3,92 +3,96 @@ import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { Col, Dropdown, Row } from 'react-bootstrap';
 import { MENU_PLACEMENT } from '@/ui/admin/uiConstants.js';
-import CsLineIcons from '@/ui/cs-line-icons/CsLineIcons';
+import { CsLineIcons } from '@/ui/cs-line-icons';
 import { layoutShowingNavMenu } from '@/ui/admin/layout/layoutSlice';
 
 const NavUserMenuContent = () => (
   <div>
-    <Row className="mb-3 ms-0 me-0">
-      <Col xs="12" className="ps-1 mb-2">
-        <div className="text-extra-small text-primary">ACCOUNT</div>
+    <Row className='ms-0 me-0 mb-3'>
+      <Col xs='12' className='ps-1 mb-2'>
+        <div className='text-extra-small text-primary'>ACCOUNT</div>
       </Col>
-      <Col xs="6" className="ps-1 pe-1">
-        <ul className="list-unstyled">
+      <Col xs='6' className='ps-1 pe-1'>
+        <ul className='list-unstyled'>
           <li>
-            <a href="#/!">User Info</a>
+            <a href='#/!'>User Info</a>
           </li>
           <li>
-            <a href="#/!">Preferences</a>
+            <a href='#/!'>Preferences</a>
           </li>
           <li>
-            <a href="#/!">Calendar</a>
+            <a href='#/!'>Calendar</a>
           </li>
         </ul>
       </Col>
-      <Col xs="6" className="ps-1 pe-1">
-        <ul className="list-unstyled">
+      <Col xs='6' className='ps-1 pe-1'>
+        <ul className='list-unstyled'>
           <li>
-            <a href="#/!">Security</a>
+            <a href='#/!'>Security</a>
           </li>
           <li>
-            <a href="#/!">Billing</a>
-          </li>
-        </ul>
-      </Col>
-    </Row>
-    <Row className="mb-1 ms-0 me-0">
-      <Col xs="12" className="p-1 mb-2 pt-2">
-        <div className="text-extra-small text-primary">APPLICATION</div>
-      </Col>
-      <Col xs="6" className="ps-1 pe-1">
-        <ul className="list-unstyled">
-          <li>
-            <a href="#/!">Themes</a>
-          </li>
-          <li>
-            <a href="#/!">Language</a>
-          </li>
-        </ul>
-      </Col>
-      <Col xs="6" className="pe-1 ps-1">
-        <ul className="list-unstyled">
-          <li>
-            <a href="#/!">Devices</a>
-          </li>
-          <li>
-            <a href="#/!">Storage</a>
+            <a href='#/!'>Billing</a>
           </li>
         </ul>
       </Col>
     </Row>
-    <Row className="mb-1 ms-0 me-0">
-      <Col xs="12" className="p-1 mb-3 pt-3">
-        <div className="separator-light" />
+    <Row className='ms-0 me-0 mb-1'>
+      <Col xs='12' className='mb-2 p-1 pt-2'>
+        <div className='text-extra-small text-primary'>APPLICATION</div>
       </Col>
-      <Col xs="6" className="ps-1 pe-1">
-        <ul className="list-unstyled">
+      <Col xs='6' className='ps-1 pe-1'>
+        <ul className='list-unstyled'>
           <li>
-            <a href="#/!">
-              <CsLineIcons icon="help" className="me-2" size="17" /> <span className="align-middle">Help</span>
+            <a href='#/!'>Themes</a>
+          </li>
+          <li>
+            <a href='#/!'>Language</a>
+          </li>
+        </ul>
+      </Col>
+      <Col xs='6' className='pe-1 ps-1'>
+        <ul className='list-unstyled'>
+          <li>
+            <a href='#/!'>Devices</a>
+          </li>
+          <li>
+            <a href='#/!'>Storage</a>
+          </li>
+        </ul>
+      </Col>
+    </Row>
+    <Row className='ms-0 me-0 mb-1'>
+      <Col xs='12' className='mb-3 p-1 pt-3'>
+        <div className='separator-light' />
+      </Col>
+      <Col xs='6' className='ps-1 pe-1'>
+        <ul className='list-unstyled'>
+          <li>
+            <a href='#/!'>
+              <CsLineIcons icon='help' className='me-2' size='17' />{' '}
+              <span className='align-middle'>Help</span>
             </a>
           </li>
           <li>
-            <a href="#/!">
-              <CsLineIcons icon="file-text" className="me-2" size="17" /> <span className="align-middle">Docs</span>
+            <a href='#/!'>
+              <CsLineIcons icon='file-text' className='me-2' size='17' />{' '}
+              <span className='align-middle'>Docs</span>
             </a>
           </li>
         </ul>
       </Col>
-      <Col xs="6" className="pe-1 ps-1">
-        <ul className="list-unstyled">
+      <Col xs='6' className='pe-1 ps-1'>
+        <ul className='list-unstyled'>
           <li>
-            <a href="#/!">
-              <CsLineIcons icon="gear" className="me-2" size="17" /> <span className="align-middle">Settings</span>
+            <a href='#/!'>
+              <CsLineIcons icon='gear' className='me-2' size='17' />{' '}
+              <span className='align-middle'>Settings</span>
             </a>
           </li>
           <li>
-            <a href="#/!">
-              <CsLineIcons icon="logout" className="me-2" size="17" /> <span className="align-middle">Logout</span>
+            <a href='#/!'>
+              <CsLineIcons icon='logout' className='me-2' size='17' />{' '}
+              <span className='align-middle'>Logout</span>
             </a>
           </li>
         </ul>
@@ -100,10 +104,10 @@ const NavUserMenuContent = () => (
 const NavUserMenuDropdownToggle = React.memo(
   React.forwardRef(({ onClick, expanded = false, user = {} }, ref) => (
     <a
-      href="#/!"
+      href='#/!'
       ref={ref}
-      className="d-flex user position-relative"
-      data-toggle="dropdown"
+      className='d-flex user position-relative'
+      data-toggle='dropdown'
       aria-expanded={expanded}
       onClick={(e) => {
         e.preventDefault();
@@ -111,8 +115,8 @@ const NavUserMenuDropdownToggle = React.memo(
         onClick(e);
       }}
     >
-      <img className="profile" alt={user.name} src={user.thumb} />
-      <div className="name">{user.name}</div>
+      <img className='profile' alt={user.name} src={user.thumb} />
+      <div className='name'>{user.name}</div>
     </a>
   ))
 );
@@ -121,7 +125,14 @@ const NavUserMenuDropdownToggle = React.memo(
 const NavUserMenuDropdownMenu = React.memo(
   React.forwardRef(({ style, className }, ref) => {
     return (
-      <div ref={ref} style={style} className={classNames('dropdown-menu dropdown-menu-end user-menu wide', className)}>
+      <div
+        ref={ref}
+        style={style}
+        className={classNames(
+          'dropdown-menu dropdown-menu-end user-menu wide',
+          className
+        )}
+      >
         <NavUserMenuContent />
       </div>
     );
@@ -147,7 +158,12 @@ const NavUserMenu = () => {
 
   const onToggle = (status, event) => {
     if (event && event.stopPropagation) event.stopPropagation();
-    else if (event && event.originalEvent && event.originalEvent.stopPropagation) event.originalEvent.stopPropagation();
+    else if (
+      event &&
+      event.originalEvent &&
+      event.originalEvent.stopPropagation
+    )
+      event.originalEvent.stopPropagation();
     dispatch(layoutShowingNavMenu(status ? MENU_NAME : ''));
   };
 
@@ -160,11 +176,17 @@ const NavUserMenu = () => {
     return <></>;
   }
   return (
-    <Dropdown as="div" bsPrefix="user-container d-flex" onToggle={onToggle} show={showingNavMenu === MENU_NAME} drop="down">
+    <Dropdown
+      as='div'
+      bsPrefix='user-container d-flex'
+      onToggle={onToggle}
+      show={showingNavMenu === MENU_NAME}
+      drop='down'
+    >
       <Dropdown.Toggle as={NavUserMenuDropdownToggle} user={currentUser} />
       <Dropdown.Menu
         as={NavUserMenuDropdownMenu}
-        className="dropdown-menu dropdown-menu-end user-menu wide"
+        className='dropdown-menu dropdown-menu-end user-menu wide'
         popperConfig={{
           modifiers: [
             {

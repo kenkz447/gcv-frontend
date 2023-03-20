@@ -5,10 +5,16 @@ import { NavLink } from 'react-bootstrap';
 import { useIntl } from 'react-intl';
 
 import { USE_MULTI_LANGUAGE } from '@/ui/admin/uiConfig.js';
-import CsLineIcons from '@/ui/cs-line-icons/CsLineIcons';
+import { CsLineIcons } from '@/ui/cs-line-icons';
 
 const SidebarMenuItems = React.memo(({ menuItems = [] }) =>
-  menuItems.map((item, index) => <SidebarMenuItem key={`menu.${item.path}.${index}`} id={item.path} item={item} />)
+  menuItems.map((item, index) => (
+    <SidebarMenuItem
+      key={`menu.${item.path}.${index}`}
+      id={item.path}
+      item={item}
+    />
+  ))
 );
 SidebarMenuItems.displayName = 'SidebarMenuItems';
 
@@ -16,23 +22,31 @@ const SidebarMenuItem = ({ item, id }) => {
   const { pathname } = useRouter();
   const { formatMessage: f } = useIntl();
 
-  const isActive = item.path.startsWith('#') ? false : pathname === item.path || pathname.indexOf(`${item.path}/`) > -1;
+  const isActive = item.path.startsWith('#')
+    ? false
+    : pathname === item.path || pathname.indexOf(`${item.path}/`) > -1;
 
   const getLabel = (icon, label) => (
     <>
       {icon && (
         <>
-          <CsLineIcons icon={icon} className="cs-icon icon" />{' '}
+          <CsLineIcons icon={icon} className='cs-icon icon' />{' '}
         </>
       )}
-      <span className="label">{USE_MULTI_LANGUAGE ? f({ id: label }) : label}</span>
+      <span className='label'>
+        {USE_MULTI_LANGUAGE ? f({ id: label }) : label}
+      </span>
     </>
   );
 
   if (item.subs) {
     return (
       <li>
-        <NavLink to={item.path} className={classNames({ active: isActive })} data-bs-target={item.path}>
+        <NavLink
+          to={item.path}
+          className={classNames({ active: isActive })}
+          data-bs-target={item.path}
+        >
           {getLabel(item.icon, item.label)}
         </NavLink>
         <ul>
@@ -44,7 +58,7 @@ const SidebarMenuItem = ({ item, id }) => {
   if (item.isExternal) {
     return (
       <li key={id}>
-        <a href={item.path} target="_blank" rel="noopener noreferrer">
+        <a href={item.path} target='_blank' rel='noopener noreferrer'>
           {getLabel(item.icon, item.label)}
         </a>
       </li>
@@ -52,7 +66,11 @@ const SidebarMenuItem = ({ item, id }) => {
   }
   return (
     <li>
-      <NavLink to={item.path} className={classNames({ active: isActive })} activeClassName="">
+      <NavLink
+        to={item.path}
+        className={classNames({ active: isActive })}
+        activeClassName=''
+      >
         {getLabel(item.icon, item.label)}
       </NavLink>
     </li>

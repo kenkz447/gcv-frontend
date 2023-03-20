@@ -8,7 +8,7 @@ import routesAndMenuItems from '@/ui/admin/routes';
 import { MENU_BEHAVIOR, MENU_PLACEMENT } from '@/ui/admin/uiConstants.js';
 import { useWindowScroll } from '@/ui/hooks/useWindowScroll';
 import { useWindowSize } from '@/ui/hooks/useWindowSize';
-import { getMenuItems } from '@/ui/routing/helper';
+import { getMenuItems } from '@/ui/admin/routing/helper';
 
 import { checkBehaviour, checkPlacement, isDeeplyDiffBehaviourStatus, isDeeplyDiffPlacementStatus } from './helper';
 import MainMenuItems from './MainMenuItems';

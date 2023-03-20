@@ -3,7 +3,7 @@ import { Col } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 
 import routesAndMenuItems from '@/ui/admin/routes.js';
-import { getMenuItems } from '@/ui/routing/helper';
+import { getMenuItems } from '@/ui/admin/routing/helper';
 
 import SidebarMenuItems from './SidebarMenuItems';
 
@@ -16,7 +16,7 @@ const SidebarMenu = () => {
       getMenuItems({
         data: routesAndMenuItems.sidebarItems,
         isLogin,
-        userRole: currentUser.role,
+        userRole: currentUser?.role,
       }),
     [isLogin, currentUser]
   );

@@ -1,8 +1,9 @@
 /* eslint-disable react/no-danger */
 import React from 'react';
+
 import svgs from './svgs';
 
-const CsLineIcons = ({
+export const CsLineIcons = ({
   icon = '',
   className = '',
   size = null,

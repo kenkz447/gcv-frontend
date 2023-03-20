@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 
 import { USE_MULTI_LANGUAGE } from '@/ui/admin/uiConfig.js';
 import routesAndMenuItems from '@/ui/admin/routes.js';
-import { getSearchItems } from '@/ui/routing/helper';
+import { getSearchItems } from '@/ui/admin/routing/helper';
 
 const RESULT_LIMIT = 10;
 
@@ -31,7 +31,7 @@ const SearchInput = ({ show, setShow }) => {
       getSearchItems({
         data: routesAndMenuItems,
         isLogin,
-        userRole: currentUser.role,
+        userRole: currentUser?.role,
       })(),
     [isLogin, currentUser]
   );

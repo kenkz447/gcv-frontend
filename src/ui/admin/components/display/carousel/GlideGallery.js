@@ -1,14 +1,18 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { Alert, Button } from 'react-bootstrap';
 import GlideJs from '@glidejs/glide';
-import '@glidejs/glide/dist/css/glide.core.min.css';
 import { useWindowSize } from 'hooks/useWindowSize';
-import CsLineIcons from '@/ui/cs-line-icons/CsLineIcons';
+import React, { useEffect } from 'react';
+import { Alert, Button } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+
+import '@glidejs/glide/dist/css/glide.core.min.css';
+
+import { CsLineIcons } from '@/ui/cs-line-icons';
 
 const Error = () => (
-  <Alert variant="info">
-    The GlideGallery component must contain the <b>{'<GlideGallery.LargeItems>'}</b> and <b>{'<GlideGallery.ThumbItems>'}</b> children.
+  <Alert variant='info'>
+    The GlideGallery component must contain the{' '}
+    <b>{'<GlideGallery.LargeItems>'}</b> and{' '}
+    <b>{'<GlideGallery.ThumbItems>'}</b> children.
   </Alert>
 );
 const optionsLarge = {
@@ -41,8 +45,15 @@ const optionsThumb = (perView, glideLength) => ({
   },
 });
 
-const GlideGallery = ({ className = '', galleryThumbCount = 5, thumbWidth = 70, children }) => {
-  const { placementStatus, behaviourStatus, attrMobile } = useSelector((state) => state.menu);
+const GlideGallery = ({
+  className = '',
+  galleryThumbCount = 5,
+  thumbWidth = 70,
+  children,
+}) => {
+  const { placementStatus, behaviourStatus, attrMobile } = useSelector(
+    (state) => state.menu
+  );
   const largeRef = React.useRef();
   const thumbRef = React.useRef();
   const glideLarge = React.useRef();
@@ -57,18 +68,38 @@ const GlideGallery = ({ className = '', galleryThumbCount = 5, thumbWidth = 70, 
     glideThumb.current.update();
   };
 
-  const largeCarousel = children.find((x) => x.type.displayName === 'LargeItems');
-  const thumbCarousel = children.find((x) => x.type.displayName === 'ThumbItems');
+  const largeCarousel = children.find(
+    (x) => x.type.displayName === 'LargeItems'
+  );
+  const thumbCarousel = children.find(
+    (x) => x.type.displayName === 'ThumbItems'
+  );
 
   useEffect(() => {
-    if (largeCarousel && thumbCarousel && width && largeRef.current && thumbRef.current && glideLarge.current && glideThumb.current) {
+    if (
+      largeCarousel &&
+      thumbCarousel &&
+      width &&
+      largeRef.current &&
+      thumbRef.current &&
+      glideLarge.current &&
+      glideThumb.current
+    ) {
       update();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    if (largeCarousel && thumbCarousel && width && largeRef.current && thumbRef.current && glideLarge.current && glideThumb.current) {
+    if (
+      largeCarousel &&
+      thumbCarousel &&
+      width &&
+      largeRef.current &&
+      thumbRef.current &&
+      glideLarge.current &&
+      glideThumb.current
+    ) {
       setTimeout(() => {
         update();
       }, 10);
@@ -77,12 +108,21 @@ const GlideGallery = ({ className = '', galleryThumbCount = 5, thumbWidth = 70, 
   }, [width, placementStatus, behaviourStatus, attrMobile]);
 
   const glideLength = largeCarousel ? largeCarousel.props.children.length : 0;
-  const perView = glideLength !== 0 ? Math.min(galleryThumbCount, glideLength) : 0;
+  const perView =
+    glideLength !== 0 ? Math.min(galleryThumbCount, glideLength) : 0;
 
   const init = () => {
-    glideLarge.current = new GlideJs(largeRef.current, largeCarousel.props.options || optionsLarge);
-    glideThumb.current = new GlideJs(thumbRef.current, thumbCarousel.props.options || optionsThumb(perView, glideLength));
-    thumbRef.current.style.width = `${glideThumb.current.settings.perView * thumbWidth}px`;
+    glideLarge.current = new GlideJs(
+      largeRef.current,
+      largeCarousel.props.options || optionsLarge
+    );
+    glideThumb.current = new GlideJs(
+      thumbRef.current,
+      thumbCarousel.props.options || optionsThumb(perView, glideLength)
+    );
+    thumbRef.current.style.width = `${
+      glideThumb.current.settings.perView * thumbWidth
+    }px`;
   };
   const mount = () => {
     glideLarge.current.mount().update();
@@ -184,7 +224,8 @@ const GlideGallery = ({ className = '', galleryThumbCount = 5, thumbWidth = 70, 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!largeCarousel || !thumbCarousel || !Array.isArray(children)) return <Error />;
+  if (!largeCarousel || !thumbCarousel || !Array.isArray(children))
+    return <Error />;
 
   return (
     <div className={`glide glide-gallery ${className}`}>
@@ -196,31 +237,51 @@ const GlideGallery = ({ className = '', galleryThumbCount = 5, thumbWidth = 70, 
 
 const LargeItems = React.forwardRef(({ className = '', children }, ref) => (
   <div ref={ref} className={`glide glide-large ${className}`}>
-    <div className="glide__track" data-glide-el="track">
-      <ul className="glide__slides mb-0">{children}</ul>
+    <div className='glide__track' data-glide-el='track'>
+      <ul className='glide__slides mb-0'>{children}</ul>
     </div>
   </div>
 ));
 LargeItems.displayName = 'LargeItems';
 
-const ThumbItems = React.forwardRef(({ className = '', arrowVariant = 'foreground', arrowClassName = '', children }, ref) => (
-  <div ref={ref} className={`glide glide-thumb ${className}`}>
-    <div className="glide__track" data-glide-el="track">
-      <ul className="glide__slides mb-0">{children}</ul>
+const ThumbItems = React.forwardRef(
+  (
+    {
+      className = '',
+      arrowVariant = 'foreground',
+      arrowClassName = '',
+      children,
+    },
+    ref
+  ) => (
+    <div ref={ref} className={`glide glide-thumb ${className}`}>
+      <div className='glide__track' data-glide-el='track'>
+        <ul className='glide__slides mb-0'>{children}</ul>
+      </div>
+      <div className='glide__arrows' data-glide-el='controls'>
+        <Button
+          variant={arrowVariant}
+          className={`btn-icon btn-icon-only hover-outline left-arrow ${arrowClassName}`}
+          data-glide-dir='<'
+        >
+          <CsLineIcons icon='chevron-left' />
+        </Button>
+        <Button
+          variant={arrowVariant}
+          className={`btn-icon btn-icon-only hover-outline right-arrow ${arrowClassName}`}
+          data-glide-dir='>'
+        >
+          <CsLineIcons icon='chevron-right' />
+        </Button>
+      </div>
     </div>
-    <div className="glide__arrows" data-glide-el="controls">
-      <Button variant={arrowVariant} className={`btn-icon btn-icon-only hover-outline left-arrow ${arrowClassName}`} data-glide-dir="<">
-        <CsLineIcons icon="chevron-left" />
-      </Button>
-      <Button variant={arrowVariant} className={`btn-icon btn-icon-only hover-outline right-arrow ${arrowClassName}`} data-glide-dir=">">
-        <CsLineIcons icon="chevron-right" />
-      </Button>
-    </div>
-  </div>
-));
+  )
+);
 ThumbItems.displayName = 'ThumbItems';
 
-const Item = ({ className = 'p-0', children }) => <li className={`glide__slide ${className}`}>{children}</li>;
+const Item = ({ className = 'p-0', children }) => (
+  <li className={`glide__slide ${className}`}>{children}</li>
+);
 Item.displayName = 'Item';
 
 GlideGallery.LargeItems = LargeItems;

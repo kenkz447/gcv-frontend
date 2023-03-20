@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
 import GlideJs from '@glidejs/glide';
-import '@glidejs/glide/dist/css/glide.core.min.css';
 import { useWindowSize } from 'hooks/useWindowSize';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import CsLineIcons from '@/ui/cs-line-icons/CsLineIcons';
+
+import '@glidejs/glide/dist/css/glide.core.min.css';
+
+import { CsLineIcons } from '@/ui/cs-line-icons';
 
 const Glide = ({
   className = '',
@@ -28,14 +30,18 @@ const Glide = ({
   const glideRef = React.useRef();
   const { width } = useWindowSize();
 
-  const { placementStatus, behaviourStatus, attrMobile } = useSelector((state) => state.menu);
+  const { placementStatus, behaviourStatus, attrMobile } = useSelector(
+    (state) => state.menu
+  );
 
   const init = () => {
     glideRef.current = new GlideJs(carouselRef.current, options);
     if (!noDots) {
       glideRef.current.on(['mount.before'], () => {
-        const bulletCount = glideRef.current.selector.querySelectorAll('.glide__slide').length;
-        const bulletWrapper = glideRef.current.selector.querySelectorAll('.glide__bullets')[0];
+        const bulletCount =
+          glideRef.current.selector.querySelectorAll('.glide__slide').length;
+        const bulletWrapper =
+          glideRef.current.selector.querySelectorAll('.glide__bullets')[0];
 
         if (!bulletWrapper) {
           return;
@@ -57,17 +63,20 @@ const Glide = ({
     // Hiding them with d-none if it is needed
     glideRef.current.on(['resize', 'build.after'], () => {
       const { perView } = glideRef.current.settings;
-      const total = glideRef.current.selector.querySelectorAll('.glide__slide').length;
+      const total =
+        glideRef.current.selector.querySelectorAll('.glide__slide').length;
       const sub = total - perView;
 
       // Adds or removes d-none class
-      glideRef.current.selector.querySelectorAll('.glide__bullet').forEach((el, i) => {
-        if (i > sub) {
-          el.classList.add('d-none');
-        } else {
-          el.classList.remove('d-none');
-        }
-      });
+      glideRef.current.selector
+        .querySelectorAll('.glide__bullet')
+        .forEach((el, i) => {
+          if (i > sub) {
+            el.classList.add('d-none');
+          } else {
+            el.classList.remove('d-none');
+          }
+        });
       // Prevents the empty last stop when resized for a larger breakpoint with more items
       if (glideRef.current.index > sub && sub >= 0) {
         glideRef.current.go(`=${sub}`);
@@ -101,19 +110,29 @@ const Glide = ({
 
   return (
     <div ref={carouselRef} className={`glide ${className}`}>
-      <div className="glide__track" data-glide-el="track">
-        <div className="glide__slides">{children}</div>
+      <div className='glide__track' data-glide-el='track'>
+        <div className='glide__slides'>{children}</div>
         {!noControls && (
-          <div className="text-center">
-            <span className="glide__arrows slider-nav" data-glide-el="controls">
-              <button type="button" className="btn btn-icon btn-icon-only btn-outline-primary" data-glide-dir="<">
-                <CsLineIcons icon="chevron-left" />
+          <div className='text-center'>
+            <span className='glide__arrows slider-nav' data-glide-el='controls'>
+              <button
+                type='button'
+                className='btn btn-icon btn-icon-only btn-outline-primary'
+                data-glide-dir='<'
+              >
+                <CsLineIcons icon='chevron-left' />
               </button>
             </span>{' '}
-            {!noDots && <span className="glide__bullets" data-glide-el="controls[nav]" />}{' '}
-            <span className="glide__arrows slider-nav" data-glide-el="controls">
-              <button type="button" className="btn btn-icon btn-icon-only btn-outline-primary" data-glide-dir=">">
-                <CsLineIcons icon="chevron-right" />
+            {!noDots && (
+              <span className='glide__bullets' data-glide-el='controls[nav]' />
+            )}{' '}
+            <span className='glide__arrows slider-nav' data-glide-el='controls'>
+              <button
+                type='button'
+                className='btn btn-icon btn-icon-only btn-outline-primary'
+                data-glide-dir='>'
+              >
+                <CsLineIcons icon='chevron-right' />
               </button>
             </span>
           </div>
@@ -123,7 +142,9 @@ const Glide = ({
   );
 };
 
-const Item = ({ className = '', children }) => <div className={`glide__slide ${className}`}>{children}</div>;
+const Item = ({ className = '', children }) => (
+  <div className={`glide__slide ${className}`}>{children}</div>
+);
 
 Glide.Item = Item;
 Glide.Item.displayName = 'Item';

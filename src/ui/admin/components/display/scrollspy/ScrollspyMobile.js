@@ -1,13 +1,15 @@
 import React from 'react';
 import { Dropdown } from 'react-bootstrap';
-import CsLineIcons from '@/ui/cs-line-icons/CsLineIcons';
+
+import { CsLineIcons } from '@/ui/cs-line-icons';
+
 import ScrollspyContent from './ScrollspyContent';
 
 const ScrollspyToggle = React.forwardRef(({ children, onClick }, ref) => (
   <a
-    href="#/!"
+    href='#/!'
     ref={ref}
-    className="spy-button text-white"
+    className='spy-button text-white'
     onClick={(e) => {
       e.preventDefault();
       onClick(e);
@@ -27,11 +29,11 @@ const ScrollspyMobile = ({ items = [] }) => {
     <>
       <Dropdown>
         <Dropdown.Toggle as={ScrollspyToggle}>
-          <CsLineIcons icon="menu-dropdown" />
+          <CsLineIcons icon='menu-dropdown' />
         </Dropdown.Toggle>
         <Dropdown.Menu
-          as="ul"
-          className="dropdown-menu-end"
+          as='ul'
+          className='dropdown-menu-end'
           popperConfig={{
             modifiers: [
               {
