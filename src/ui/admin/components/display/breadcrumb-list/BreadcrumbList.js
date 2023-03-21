@@ -2,7 +2,7 @@ import React from 'react';
 import { Breadcrumb } from 'react-bootstrap';
 import { Link } from 'react-bootstrap';
 
-import { DEFAULT_PATHS } from '@/ui/admin/uiConfig.js';
+import { DEFAULT_PATHS } from '@/ui/admin/uiConfig';
 
 const BreadcrumbList = ({ items = [{ to: '/', text: 'Home' }], basePath = DEFAULT_PATHS.APP }) => {
   return (

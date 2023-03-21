@@ -3,9 +3,9 @@ import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { layoutShowingNavMenu } from '@/ui/admin/layout/layoutSlice';
+import { layoutShowingNavMenu } from '@/ui/admin/layout/layoutReducer';
 import routesAndMenuItems from '@/ui/admin/routes';
-import { MENU_BEHAVIOR, MENU_PLACEMENT } from '@/ui/admin/uiConstants.js';
+import { MENU_BEHAVIOR, MENU_PLACEMENT } from '@/ui/admin/uiConstants';
 import { useWindowScroll } from '@/ui/hooks/useWindowScroll';
 import { useWindowSize } from '@/ui/hooks/useWindowSize';
 import { getMenuItems } from '@/ui/admin/routing/helper';
@@ -20,7 +20,7 @@ import {
   menuChangeNavClasses,
   menuChangePinButtonEnable,
   menuChangePlacementStatus,
-} from './menuSlice';
+} from './menuReducer';
 
 const MainMenu = () => {
   const dispatch = useDispatch();
