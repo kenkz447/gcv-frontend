@@ -34,7 +34,7 @@ export class AbpTenantApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAbpMultiTenancyTenantsByIdIdGetRaw(requestParameters: ApiAbpMultiTenancyTenantsByIdIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FindTenantResultDto>> {
+    private apiAbpMultiTenancyTenantsByIdIdGetRaw = async (requestParameters: ApiAbpMultiTenancyTenantsByIdIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FindTenantResultDto>> => {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiAbpMultiTenancyTenantsByIdIdGet.');
         }
@@ -55,14 +55,14 @@ export class AbpTenantApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAbpMultiTenancyTenantsByIdIdGet(requestParameters: ApiAbpMultiTenancyTenantsByIdIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FindTenantResultDto> {
+    public apiAbpMultiTenancyTenantsByIdIdGet = async (requestParameters: ApiAbpMultiTenancyTenantsByIdIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FindTenantResultDto> => {
         const response = await this.apiAbpMultiTenancyTenantsByIdIdGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiAbpMultiTenancyTenantsByNameNameGetRaw(requestParameters: ApiAbpMultiTenancyTenantsByNameNameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FindTenantResultDto>> {
+    private apiAbpMultiTenancyTenantsByNameNameGetRaw = async (requestParameters: ApiAbpMultiTenancyTenantsByNameNameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FindTenantResultDto>> => {
         if (requestParameters.name === null || requestParameters.name === undefined) {
             throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling apiAbpMultiTenancyTenantsByNameNameGet.');
         }
@@ -83,7 +83,7 @@ export class AbpTenantApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAbpMultiTenancyTenantsByNameNameGet(requestParameters: ApiAbpMultiTenancyTenantsByNameNameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FindTenantResultDto> {
+    public apiAbpMultiTenancyTenantsByNameNameGet = async (requestParameters: ApiAbpMultiTenancyTenantsByNameNameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FindTenantResultDto> => {
         const response = await this.apiAbpMultiTenancyTenantsByNameNameGetRaw(requestParameters, initOverrides);
         return await response.value();
     }

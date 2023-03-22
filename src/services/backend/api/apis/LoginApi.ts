@@ -35,7 +35,7 @@ export class LoginApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAccountCheckPasswordPostRaw(requestParameters: ApiAccountCheckPasswordPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AbpLoginResult>> {
+    private apiAccountCheckPasswordPostRaw = async (requestParameters: ApiAccountCheckPasswordPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AbpLoginResult>> => {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -55,14 +55,14 @@ export class LoginApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAccountCheckPasswordPost(requestParameters: ApiAccountCheckPasswordPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AbpLoginResult> {
+    public apiAccountCheckPasswordPost = async (requestParameters: ApiAccountCheckPasswordPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AbpLoginResult> => {
         const response = await this.apiAccountCheckPasswordPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiAccountLoginPostRaw(requestParameters: ApiAccountLoginPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AbpLoginResult>> {
+    private apiAccountLoginPostRaw = async (requestParameters: ApiAccountLoginPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AbpLoginResult>> => {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -82,14 +82,14 @@ export class LoginApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAccountLoginPost(requestParameters: ApiAccountLoginPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AbpLoginResult> {
+    public apiAccountLoginPost = async (requestParameters: ApiAccountLoginPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AbpLoginResult> => {
         const response = await this.apiAccountLoginPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiAccountLogoutGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    private apiAccountLogoutGetRaw = async (initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> => {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -106,7 +106,7 @@ export class LoginApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAccountLogoutGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    public apiAccountLogoutGet = async (initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> => {
         await this.apiAccountLogoutGetRaw(initOverrides);
     }
 

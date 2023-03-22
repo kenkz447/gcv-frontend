@@ -1,12 +1,16 @@
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable no-undef */
+
 const path = require('path');
 const webpack = require('webpack');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
-const { GenerateSW } = require("workbox-webpack-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const { GenerateSW } = require('workbox-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -24,13 +28,11 @@ module.exports = {
     devtool: isProduction ? false : 'eval-source-map',
     plugins: [
         new webpack.DefinePlugin({
-            API_ENTRY: JSON.stringify(envConfig.API_ENTRY),
-            MEDIA_ENTRY: JSON.stringify(envConfig.MEDIA_ENTRY),
-            AUTH_ENTRY: JSON.stringify(envConfig.AUTH_ENTRY)
+            BACKEND_URL: JSON.stringify(envConfig.BACKEND_URL),
         }),
         new webpack.ProgressPlugin(),
         new MiniCssExtractPlugin({
-            filename: 'css/[name].[chunkhash].css'
+            filename: isProduction ? 'css/[name].[chunkhash].css' : 'main.css'
         }),
         new HtmlWebpackPlugin({
             inject: 'body',
@@ -56,7 +58,7 @@ module.exports = {
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
-                    "postcss-loader",
+                    'postcss-loader',
                     {
                         loader: 'sass-loader',
                         options: {
@@ -75,7 +77,7 @@ module.exports = {
                         loader: 'ts-loader',
                         options: {
                             transpileOnly: true,
-                            getCustomTransformers: () => ({ before: [require("ts-nameof")] }),
+                            getCustomTransformers: () => ({ before: [require('ts-nameof')] }),
                         }
                     }
                 ],

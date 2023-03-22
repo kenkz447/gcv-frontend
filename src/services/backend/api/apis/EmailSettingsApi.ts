@@ -36,7 +36,7 @@ export class EmailSettingsApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiSettingManagementEmailingGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmailSettingsDto>> {
+    private apiSettingManagementEmailingGetRaw = async (initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EmailSettingsDto>> => {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -53,14 +53,14 @@ export class EmailSettingsApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiSettingManagementEmailingGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmailSettingsDto> {
+    public apiSettingManagementEmailingGet = async (initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EmailSettingsDto> => {
         const response = await this.apiSettingManagementEmailingGetRaw(initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiSettingManagementEmailingPostRaw(requestParameters: ApiSettingManagementEmailingPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    private apiSettingManagementEmailingPostRaw = async (requestParameters: ApiSettingManagementEmailingPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> => {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -80,13 +80,13 @@ export class EmailSettingsApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiSettingManagementEmailingPost(requestParameters: ApiSettingManagementEmailingPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    public apiSettingManagementEmailingPost = async (requestParameters: ApiSettingManagementEmailingPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> => {
         await this.apiSettingManagementEmailingPostRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async apiSettingManagementEmailingSendTestEmailPostRaw(requestParameters: ApiSettingManagementEmailingSendTestEmailPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    private apiSettingManagementEmailingSendTestEmailPostRaw = async (requestParameters: ApiSettingManagementEmailingSendTestEmailPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> => {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -106,7 +106,7 @@ export class EmailSettingsApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiSettingManagementEmailingSendTestEmailPost(requestParameters: ApiSettingManagementEmailingSendTestEmailPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    public apiSettingManagementEmailingSendTestEmailPost = async (requestParameters: ApiSettingManagementEmailingSendTestEmailPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> => {
         await this.apiSettingManagementEmailingSendTestEmailPostRaw(requestParameters, initOverrides);
     }
 

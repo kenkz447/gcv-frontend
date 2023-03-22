@@ -66,7 +66,7 @@ export class TenantApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiMultiTenancyTenantsGetRaw(requestParameters: ApiMultiTenancyTenantsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TenantDtoPagedResultDto>> {
+    private apiMultiTenancyTenantsGetRaw = async (requestParameters: ApiMultiTenancyTenantsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TenantDtoPagedResultDto>> => {
         const queryParameters: any = {};
 
         if (requestParameters.filter !== undefined) {
@@ -99,14 +99,14 @@ export class TenantApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiMultiTenancyTenantsGet(requestParameters: ApiMultiTenancyTenantsGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TenantDtoPagedResultDto> {
+    public apiMultiTenancyTenantsGet = async (requestParameters: ApiMultiTenancyTenantsGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TenantDtoPagedResultDto> => {
         const response = await this.apiMultiTenancyTenantsGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiMultiTenancyTenantsIdDefaultConnectionStringDeleteRaw(requestParameters: ApiMultiTenancyTenantsIdDefaultConnectionStringDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    private apiMultiTenancyTenantsIdDefaultConnectionStringDeleteRaw = async (requestParameters: ApiMultiTenancyTenantsIdDefaultConnectionStringDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> => {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiMultiTenancyTenantsIdDefaultConnectionStringDelete.');
         }
@@ -127,13 +127,13 @@ export class TenantApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiMultiTenancyTenantsIdDefaultConnectionStringDelete(requestParameters: ApiMultiTenancyTenantsIdDefaultConnectionStringDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    public apiMultiTenancyTenantsIdDefaultConnectionStringDelete = async (requestParameters: ApiMultiTenancyTenantsIdDefaultConnectionStringDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> => {
         await this.apiMultiTenancyTenantsIdDefaultConnectionStringDeleteRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async apiMultiTenancyTenantsIdDefaultConnectionStringGetRaw(requestParameters: ApiMultiTenancyTenantsIdDefaultConnectionStringGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
+    private apiMultiTenancyTenantsIdDefaultConnectionStringGetRaw = async (requestParameters: ApiMultiTenancyTenantsIdDefaultConnectionStringGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> => {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiMultiTenancyTenantsIdDefaultConnectionStringGet.');
         }
@@ -154,14 +154,14 @@ export class TenantApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiMultiTenancyTenantsIdDefaultConnectionStringGet(requestParameters: ApiMultiTenancyTenantsIdDefaultConnectionStringGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+    public apiMultiTenancyTenantsIdDefaultConnectionStringGet = async (requestParameters: ApiMultiTenancyTenantsIdDefaultConnectionStringGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> => {
         const response = await this.apiMultiTenancyTenantsIdDefaultConnectionStringGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiMultiTenancyTenantsIdDefaultConnectionStringPutRaw(requestParameters: ApiMultiTenancyTenantsIdDefaultConnectionStringPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    private apiMultiTenancyTenantsIdDefaultConnectionStringPutRaw = async (requestParameters: ApiMultiTenancyTenantsIdDefaultConnectionStringPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> => {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiMultiTenancyTenantsIdDefaultConnectionStringPut.');
         }
@@ -186,13 +186,13 @@ export class TenantApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiMultiTenancyTenantsIdDefaultConnectionStringPut(requestParameters: ApiMultiTenancyTenantsIdDefaultConnectionStringPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    public apiMultiTenancyTenantsIdDefaultConnectionStringPut = async (requestParameters: ApiMultiTenancyTenantsIdDefaultConnectionStringPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> => {
         await this.apiMultiTenancyTenantsIdDefaultConnectionStringPutRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async apiMultiTenancyTenantsIdDeleteRaw(requestParameters: ApiMultiTenancyTenantsIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    private apiMultiTenancyTenantsIdDeleteRaw = async (requestParameters: ApiMultiTenancyTenantsIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> => {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiMultiTenancyTenantsIdDelete.');
         }
@@ -213,13 +213,13 @@ export class TenantApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiMultiTenancyTenantsIdDelete(requestParameters: ApiMultiTenancyTenantsIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    public apiMultiTenancyTenantsIdDelete = async (requestParameters: ApiMultiTenancyTenantsIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> => {
         await this.apiMultiTenancyTenantsIdDeleteRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async apiMultiTenancyTenantsIdGetRaw(requestParameters: ApiMultiTenancyTenantsIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TenantDto>> {
+    private apiMultiTenancyTenantsIdGetRaw = async (requestParameters: ApiMultiTenancyTenantsIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TenantDto>> => {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiMultiTenancyTenantsIdGet.');
         }
@@ -240,14 +240,14 @@ export class TenantApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiMultiTenancyTenantsIdGet(requestParameters: ApiMultiTenancyTenantsIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TenantDto> {
+    public apiMultiTenancyTenantsIdGet = async (requestParameters: ApiMultiTenancyTenantsIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TenantDto> => {
         const response = await this.apiMultiTenancyTenantsIdGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiMultiTenancyTenantsIdPutRaw(requestParameters: ApiMultiTenancyTenantsIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TenantDto>> {
+    private apiMultiTenancyTenantsIdPutRaw = async (requestParameters: ApiMultiTenancyTenantsIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TenantDto>> => {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiMultiTenancyTenantsIdPut.');
         }
@@ -271,14 +271,14 @@ export class TenantApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiMultiTenancyTenantsIdPut(requestParameters: ApiMultiTenancyTenantsIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TenantDto> {
+    public apiMultiTenancyTenantsIdPut = async (requestParameters: ApiMultiTenancyTenantsIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TenantDto> => {
         const response = await this.apiMultiTenancyTenantsIdPutRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiMultiTenancyTenantsPostRaw(requestParameters: ApiMultiTenancyTenantsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TenantDto>> {
+    private apiMultiTenancyTenantsPostRaw = async (requestParameters: ApiMultiTenancyTenantsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TenantDto>> => {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -298,7 +298,7 @@ export class TenantApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiMultiTenancyTenantsPost(requestParameters: ApiMultiTenancyTenantsPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TenantDto> {
+    public apiMultiTenancyTenantsPost = async (requestParameters: ApiMultiTenancyTenantsPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TenantDto> => {
         const response = await this.apiMultiTenancyTenantsPostRaw(requestParameters, initOverrides);
         return await response.value();
     }

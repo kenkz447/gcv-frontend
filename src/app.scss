@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/** FIX Tailwindcss*/
+.tw {
+    &-first-letter\:capitalize:first-letter {
+        text-transform: capitalize;
+    }
+}

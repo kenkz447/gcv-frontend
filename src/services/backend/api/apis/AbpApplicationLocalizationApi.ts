@@ -31,7 +31,7 @@ export class AbpApplicationLocalizationApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAbpApplicationLocalizationGetRaw(requestParameters: ApiAbpApplicationLocalizationGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ApplicationLocalizationDto>> {
+    private apiAbpApplicationLocalizationGetRaw = async (requestParameters: ApiAbpApplicationLocalizationGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ApplicationLocalizationDto>> => {
         if (requestParameters.cultureName === null || requestParameters.cultureName === undefined) {
             throw new runtime.RequiredError('cultureName','Required parameter requestParameters.cultureName was null or undefined when calling apiAbpApplicationLocalizationGet.');
         }
@@ -60,7 +60,7 @@ export class AbpApplicationLocalizationApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAbpApplicationLocalizationGet(requestParameters: ApiAbpApplicationLocalizationGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ApplicationLocalizationDto> {
+    public apiAbpApplicationLocalizationGet = async (requestParameters: ApiAbpApplicationLocalizationGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ApplicationLocalizationDto> => {
         const response = await this.apiAbpApplicationLocalizationGetRaw(requestParameters, initOverrides);
         return await response.value();
     }

@@ -46,7 +46,7 @@ export class AccountApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAccountRegisterPostRaw(requestParameters: ApiAccountRegisterPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityUserDto>> {
+    private apiAccountRegisterPostRaw = async (requestParameters: ApiAccountRegisterPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityUserDto>> => {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -66,14 +66,14 @@ export class AccountApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAccountRegisterPost(requestParameters: ApiAccountRegisterPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityUserDto> {
+    public apiAccountRegisterPost = async (requestParameters: ApiAccountRegisterPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityUserDto> => {
         const response = await this.apiAccountRegisterPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiAccountResetPasswordPostRaw(requestParameters: ApiAccountResetPasswordPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    private apiAccountResetPasswordPostRaw = async (requestParameters: ApiAccountResetPasswordPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> => {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -93,13 +93,13 @@ export class AccountApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAccountResetPasswordPost(requestParameters: ApiAccountResetPasswordPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    public apiAccountResetPasswordPost = async (requestParameters: ApiAccountResetPasswordPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> => {
         await this.apiAccountResetPasswordPostRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async apiAccountSendPasswordResetCodePostRaw(requestParameters: ApiAccountSendPasswordResetCodePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    private apiAccountSendPasswordResetCodePostRaw = async (requestParameters: ApiAccountSendPasswordResetCodePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> => {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -119,13 +119,13 @@ export class AccountApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAccountSendPasswordResetCodePost(requestParameters: ApiAccountSendPasswordResetCodePostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    public apiAccountSendPasswordResetCodePost = async (requestParameters: ApiAccountSendPasswordResetCodePostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> => {
         await this.apiAccountSendPasswordResetCodePostRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async apiAccountVerifyPasswordResetTokenPostRaw(requestParameters: ApiAccountVerifyPasswordResetTokenPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<boolean>> {
+    private apiAccountVerifyPasswordResetTokenPostRaw = async (requestParameters: ApiAccountVerifyPasswordResetTokenPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<boolean>> => {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -145,7 +145,7 @@ export class AccountApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAccountVerifyPasswordResetTokenPost(requestParameters: ApiAccountVerifyPasswordResetTokenPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<boolean> {
+    public apiAccountVerifyPasswordResetTokenPost = async (requestParameters: ApiAccountVerifyPasswordResetTokenPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<boolean> => {
         const response = await this.apiAccountVerifyPasswordResetTokenPostRaw(requestParameters, initOverrides);
         return await response.value();
     }

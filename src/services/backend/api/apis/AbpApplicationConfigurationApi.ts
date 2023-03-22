@@ -30,7 +30,7 @@ export class AbpApplicationConfigurationApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAbpApplicationConfigurationGetRaw(requestParameters: ApiAbpApplicationConfigurationGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ApplicationConfigurationDto>> {
+    private apiAbpApplicationConfigurationGetRaw = async (requestParameters: ApiAbpApplicationConfigurationGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ApplicationConfigurationDto>> => {
         const queryParameters: any = {};
 
         if (requestParameters.includeLocalizationResources !== undefined) {
@@ -51,7 +51,7 @@ export class AbpApplicationConfigurationApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAbpApplicationConfigurationGet(requestParameters: ApiAbpApplicationConfigurationGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ApplicationConfigurationDto> {
+    public apiAbpApplicationConfigurationGet = async (requestParameters: ApiAbpApplicationConfigurationGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ApplicationConfigurationDto> => {
         const response = await this.apiAbpApplicationConfigurationGetRaw(requestParameters, initOverrides);
         return await response.value();
     }

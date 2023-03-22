@@ -38,7 +38,7 @@ export class PermissionsApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiPermissionManagementPermissionsGetRaw(requestParameters: ApiPermissionManagementPermissionsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetPermissionListResultDto>> {
+    private apiPermissionManagementPermissionsGetRaw = async (requestParameters: ApiPermissionManagementPermissionsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetPermissionListResultDto>> => {
         const queryParameters: any = {};
 
         if (requestParameters.providerName !== undefined) {
@@ -63,14 +63,14 @@ export class PermissionsApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiPermissionManagementPermissionsGet(requestParameters: ApiPermissionManagementPermissionsGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetPermissionListResultDto> {
+    public apiPermissionManagementPermissionsGet = async (requestParameters: ApiPermissionManagementPermissionsGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetPermissionListResultDto> => {
         const response = await this.apiPermissionManagementPermissionsGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiPermissionManagementPermissionsPutRaw(requestParameters: ApiPermissionManagementPermissionsPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    private apiPermissionManagementPermissionsPutRaw = async (requestParameters: ApiPermissionManagementPermissionsPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> => {
         const queryParameters: any = {};
 
         if (requestParameters.providerName !== undefined) {
@@ -98,7 +98,7 @@ export class PermissionsApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiPermissionManagementPermissionsPut(requestParameters: ApiPermissionManagementPermissionsPutRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    public apiPermissionManagementPermissionsPut = async (requestParameters: ApiPermissionManagementPermissionsPutRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> => {
         await this.apiPermissionManagementPermissionsPutRaw(requestParameters, initOverrides);
     }
 

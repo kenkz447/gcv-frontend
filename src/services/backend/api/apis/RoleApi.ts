@@ -54,7 +54,7 @@ export class RoleApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityRolesAllGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityRoleDtoListResultDto>> {
+    private apiIdentityRolesAllGetRaw = async (initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityRoleDtoListResultDto>> => {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -71,14 +71,14 @@ export class RoleApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityRolesAllGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityRoleDtoListResultDto> {
+    public apiIdentityRolesAllGet = async (initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityRoleDtoListResultDto> => {
         const response = await this.apiIdentityRolesAllGetRaw(initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiIdentityRolesGetRaw(requestParameters: ApiIdentityRolesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityRoleDtoPagedResultDto>> {
+    private apiIdentityRolesGetRaw = async (requestParameters: ApiIdentityRolesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityRoleDtoPagedResultDto>> => {
         const queryParameters: any = {};
 
         if (requestParameters.filter !== undefined) {
@@ -111,14 +111,14 @@ export class RoleApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityRolesGet(requestParameters: ApiIdentityRolesGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityRoleDtoPagedResultDto> {
+    public apiIdentityRolesGet = async (requestParameters: ApiIdentityRolesGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityRoleDtoPagedResultDto> => {
         const response = await this.apiIdentityRolesGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiIdentityRolesIdDeleteRaw(requestParameters: ApiIdentityRolesIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    private apiIdentityRolesIdDeleteRaw = async (requestParameters: ApiIdentityRolesIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> => {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiIdentityRolesIdDelete.');
         }
@@ -139,13 +139,13 @@ export class RoleApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityRolesIdDelete(requestParameters: ApiIdentityRolesIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    public apiIdentityRolesIdDelete = async (requestParameters: ApiIdentityRolesIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> => {
         await this.apiIdentityRolesIdDeleteRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async apiIdentityRolesIdGetRaw(requestParameters: ApiIdentityRolesIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityRoleDto>> {
+    private apiIdentityRolesIdGetRaw = async (requestParameters: ApiIdentityRolesIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityRoleDto>> => {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiIdentityRolesIdGet.');
         }
@@ -166,14 +166,14 @@ export class RoleApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityRolesIdGet(requestParameters: ApiIdentityRolesIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityRoleDto> {
+    public apiIdentityRolesIdGet = async (requestParameters: ApiIdentityRolesIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityRoleDto> => {
         const response = await this.apiIdentityRolesIdGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiIdentityRolesIdPutRaw(requestParameters: ApiIdentityRolesIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityRoleDto>> {
+    private apiIdentityRolesIdPutRaw = async (requestParameters: ApiIdentityRolesIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityRoleDto>> => {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiIdentityRolesIdPut.');
         }
@@ -197,14 +197,14 @@ export class RoleApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityRolesIdPut(requestParameters: ApiIdentityRolesIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityRoleDto> {
+    public apiIdentityRolesIdPut = async (requestParameters: ApiIdentityRolesIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityRoleDto> => {
         const response = await this.apiIdentityRolesIdPutRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiIdentityRolesPostRaw(requestParameters: ApiIdentityRolesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityRoleDto>> {
+    private apiIdentityRolesPostRaw = async (requestParameters: ApiIdentityRolesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityRoleDto>> => {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -224,7 +224,7 @@ export class RoleApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityRolesPost(requestParameters: ApiIdentityRolesPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityRoleDto> {
+    public apiIdentityRolesPost = async (requestParameters: ApiIdentityRolesPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityRoleDto> => {
         const response = await this.apiIdentityRolesPostRaw(requestParameters, initOverrides);
         return await response.value();
     }

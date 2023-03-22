@@ -36,7 +36,7 @@ export class ProfileApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAccountMyProfileChangePasswordPostRaw(requestParameters: ApiAccountMyProfileChangePasswordPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    private apiAccountMyProfileChangePasswordPostRaw = async (requestParameters: ApiAccountMyProfileChangePasswordPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> => {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -56,13 +56,13 @@ export class ProfileApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAccountMyProfileChangePasswordPost(requestParameters: ApiAccountMyProfileChangePasswordPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    public apiAccountMyProfileChangePasswordPost = async (requestParameters: ApiAccountMyProfileChangePasswordPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> => {
         await this.apiAccountMyProfileChangePasswordPostRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async apiAccountMyProfileGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProfileDto>> {
+    private apiAccountMyProfileGetRaw = async (initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProfileDto>> => {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -79,14 +79,14 @@ export class ProfileApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAccountMyProfileGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProfileDto> {
+    public apiAccountMyProfileGet = async (initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProfileDto> => {
         const response = await this.apiAccountMyProfileGetRaw(initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiAccountMyProfilePutRaw(requestParameters: ApiAccountMyProfilePutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProfileDto>> {
+    private apiAccountMyProfilePutRaw = async (requestParameters: ApiAccountMyProfilePutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProfileDto>> => {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -106,7 +106,7 @@ export class ProfileApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAccountMyProfilePut(requestParameters: ApiAccountMyProfilePutRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProfileDto> {
+    public apiAccountMyProfilePut = async (requestParameters: ApiAccountMyProfilePutRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProfileDto> => {
         const response = await this.apiAccountMyProfilePutRaw(requestParameters, initOverrides);
         return await response.value();
     }

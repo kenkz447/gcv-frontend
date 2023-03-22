@@ -41,7 +41,7 @@ export class MediaFilesApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAppMediaFilesGetRaw(requestParameters: ApiAppMediaFilesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MediaFileDtoPagedResultDto>> {
+    private apiAppMediaFilesGetRaw = async (requestParameters: ApiAppMediaFilesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MediaFileDtoPagedResultDto>> => {
         const queryParameters: any = {};
 
         if (requestParameters.page !== undefined) {
@@ -74,14 +74,14 @@ export class MediaFilesApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAppMediaFilesGet(requestParameters: ApiAppMediaFilesGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MediaFileDtoPagedResultDto> {
+    public apiAppMediaFilesGet = async (requestParameters: ApiAppMediaFilesGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MediaFileDtoPagedResultDto> => {
         const response = await this.apiAppMediaFilesGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiAppMediaFilesIdDeleteRaw(requestParameters: ApiAppMediaFilesIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    private apiAppMediaFilesIdDeleteRaw = async (requestParameters: ApiAppMediaFilesIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> => {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiAppMediaFilesIdDelete.');
         }
@@ -102,13 +102,13 @@ export class MediaFilesApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAppMediaFilesIdDelete(requestParameters: ApiAppMediaFilesIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    public apiAppMediaFilesIdDelete = async (requestParameters: ApiAppMediaFilesIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> => {
         await this.apiAppMediaFilesIdDeleteRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async apiAppMediaFilesUploadPostRaw(requestParameters: ApiAppMediaFilesUploadPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<MediaFileDto>>> {
+    private apiAppMediaFilesUploadPostRaw = async (requestParameters: ApiAppMediaFilesUploadPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<MediaFileDto>>> => {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -148,7 +148,7 @@ export class MediaFilesApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAppMediaFilesUploadPost(requestParameters: ApiAppMediaFilesUploadPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<MediaFileDto>> {
+    public apiAppMediaFilesUploadPost = async (requestParameters: ApiAppMediaFilesUploadPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<MediaFileDto>> => {
         const response = await this.apiAppMediaFilesUploadPostRaw(requestParameters, initOverrides);
         return await response.value();
     }

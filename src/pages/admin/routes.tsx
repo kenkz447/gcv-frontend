@@ -1,11 +1,9 @@
 import loadable from '@loadable/component';
 import React from 'react';
-import { Route, Routes } from 'react-router';
+import { Route } from 'react-router';
 
-const AdminPage = loadable(() => import('./Page'));
+const AdminPage = loadable(() => import('./AdminPage'));
 
 export default (
-    <Routes>
-        <Route path="/admin" element={<AdminPage />} />
-    </Routes>
+    <Route path="/admin" element={<AdminPage />} />
 );

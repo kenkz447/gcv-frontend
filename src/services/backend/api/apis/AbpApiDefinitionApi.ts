@@ -30,7 +30,7 @@ export class AbpApiDefinitionApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAbpApiDefinitionGetRaw(requestParameters: ApiAbpApiDefinitionGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ApplicationApiDescriptionModel>> {
+    private apiAbpApiDefinitionGetRaw = async (requestParameters: ApiAbpApiDefinitionGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ApplicationApiDescriptionModel>> => {
         const queryParameters: any = {};
 
         if (requestParameters.includeTypes !== undefined) {
@@ -51,7 +51,7 @@ export class AbpApiDefinitionApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiAbpApiDefinitionGet(requestParameters: ApiAbpApiDefinitionGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ApplicationApiDescriptionModel> {
+    public apiAbpApiDefinitionGet = async (requestParameters: ApiAbpApiDefinitionGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ApplicationApiDescriptionModel> => {
         const response = await this.apiAbpApiDefinitionGetRaw(requestParameters, initOverrides);
         return await response.value();
     }

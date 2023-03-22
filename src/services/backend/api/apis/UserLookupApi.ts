@@ -46,7 +46,7 @@ export class UserLookupApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityUsersLookupByUsernameUserNameGetRaw(requestParameters: ApiIdentityUsersLookupByUsernameUserNameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserData>> {
+    private apiIdentityUsersLookupByUsernameUserNameGetRaw = async (requestParameters: ApiIdentityUsersLookupByUsernameUserNameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserData>> => {
         if (requestParameters.userName === null || requestParameters.userName === undefined) {
             throw new runtime.RequiredError('userName','Required parameter requestParameters.userName was null or undefined when calling apiIdentityUsersLookupByUsernameUserNameGet.');
         }
@@ -67,14 +67,14 @@ export class UserLookupApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityUsersLookupByUsernameUserNameGet(requestParameters: ApiIdentityUsersLookupByUsernameUserNameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserData> {
+    public apiIdentityUsersLookupByUsernameUserNameGet = async (requestParameters: ApiIdentityUsersLookupByUsernameUserNameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserData> => {
         const response = await this.apiIdentityUsersLookupByUsernameUserNameGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiIdentityUsersLookupCountGetRaw(requestParameters: ApiIdentityUsersLookupCountGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<number>> {
+    private apiIdentityUsersLookupCountGetRaw = async (requestParameters: ApiIdentityUsersLookupCountGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<number>> => {
         const queryParameters: any = {};
 
         if (requestParameters.filter !== undefined) {
@@ -95,14 +95,14 @@ export class UserLookupApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityUsersLookupCountGet(requestParameters: ApiIdentityUsersLookupCountGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<number> {
+    public apiIdentityUsersLookupCountGet = async (requestParameters: ApiIdentityUsersLookupCountGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<number> => {
         const response = await this.apiIdentityUsersLookupCountGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiIdentityUsersLookupIdGetRaw(requestParameters: ApiIdentityUsersLookupIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserData>> {
+    private apiIdentityUsersLookupIdGetRaw = async (requestParameters: ApiIdentityUsersLookupIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserData>> => {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiIdentityUsersLookupIdGet.');
         }
@@ -123,14 +123,14 @@ export class UserLookupApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityUsersLookupIdGet(requestParameters: ApiIdentityUsersLookupIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserData> {
+    public apiIdentityUsersLookupIdGet = async (requestParameters: ApiIdentityUsersLookupIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserData> => {
         const response = await this.apiIdentityUsersLookupIdGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiIdentityUsersLookupSearchGetRaw(requestParameters: ApiIdentityUsersLookupSearchGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserDataListResultDto>> {
+    private apiIdentityUsersLookupSearchGetRaw = async (requestParameters: ApiIdentityUsersLookupSearchGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserDataListResultDto>> => {
         const queryParameters: any = {};
 
         if (requestParameters.filter !== undefined) {
@@ -163,7 +163,7 @@ export class UserLookupApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityUsersLookupSearchGet(requestParameters: ApiIdentityUsersLookupSearchGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserDataListResultDto> {
+    public apiIdentityUsersLookupSearchGet = async (requestParameters: ApiIdentityUsersLookupSearchGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserDataListResultDto> => {
         const response = await this.apiIdentityUsersLookupSearchGetRaw(requestParameters, initOverrides);
         return await response.value();
     }

@@ -4,7 +4,7 @@ import * as ReactDOMClient from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'reduxjs-toolkit-persist/integration/react';
 
-import './app.css';
+import './app.scss';
 
 import { persistedStore, store } from '@/domain';
 import { Pages } from '@/pages';

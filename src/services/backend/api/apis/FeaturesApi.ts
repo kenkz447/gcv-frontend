@@ -43,7 +43,7 @@ export class FeaturesApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiFeatureManagementFeaturesDeleteRaw(requestParameters: ApiFeatureManagementFeaturesDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    private apiFeatureManagementFeaturesDeleteRaw = async (requestParameters: ApiFeatureManagementFeaturesDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> => {
         const queryParameters: any = {};
 
         if (requestParameters.providerName !== undefined) {
@@ -68,13 +68,13 @@ export class FeaturesApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiFeatureManagementFeaturesDelete(requestParameters: ApiFeatureManagementFeaturesDeleteRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    public apiFeatureManagementFeaturesDelete = async (requestParameters: ApiFeatureManagementFeaturesDeleteRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> => {
         await this.apiFeatureManagementFeaturesDeleteRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async apiFeatureManagementFeaturesGetRaw(requestParameters: ApiFeatureManagementFeaturesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetFeatureListResultDto>> {
+    private apiFeatureManagementFeaturesGetRaw = async (requestParameters: ApiFeatureManagementFeaturesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetFeatureListResultDto>> => {
         const queryParameters: any = {};
 
         if (requestParameters.providerName !== undefined) {
@@ -99,14 +99,14 @@ export class FeaturesApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiFeatureManagementFeaturesGet(requestParameters: ApiFeatureManagementFeaturesGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetFeatureListResultDto> {
+    public apiFeatureManagementFeaturesGet = async (requestParameters: ApiFeatureManagementFeaturesGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetFeatureListResultDto> => {
         const response = await this.apiFeatureManagementFeaturesGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiFeatureManagementFeaturesPutRaw(requestParameters: ApiFeatureManagementFeaturesPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    private apiFeatureManagementFeaturesPutRaw = async (requestParameters: ApiFeatureManagementFeaturesPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> => {
         const queryParameters: any = {};
 
         if (requestParameters.providerName !== undefined) {
@@ -134,7 +134,7 @@ export class FeaturesApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiFeatureManagementFeaturesPut(requestParameters: ApiFeatureManagementFeaturesPutRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    public apiFeatureManagementFeaturesPut = async (requestParameters: ApiFeatureManagementFeaturesPutRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> => {
         await this.apiFeatureManagementFeaturesPutRaw(requestParameters, initOverrides);
     }
 

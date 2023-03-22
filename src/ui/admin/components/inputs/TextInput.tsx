@@ -21,7 +21,7 @@ export function TextInput(props: TextInputProps) {
                 {...field}
             />
             {meta.error && meta.touched && (
-                <div className='d-block invalid-tooltip'>{meta.error}</div>
+                <div className='d-block invalid-tooltip tw-first-letter:uppercase'>{meta.error}</div>
             )}
             {props.suffixElm ?? null}
         </div>

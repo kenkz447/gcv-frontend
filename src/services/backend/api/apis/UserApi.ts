@@ -72,7 +72,7 @@ export class UserApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityUsersAssignableRolesGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityRoleDtoListResultDto>> {
+    private apiIdentityUsersAssignableRolesGetRaw = async (initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityRoleDtoListResultDto>> => {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -89,14 +89,14 @@ export class UserApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityUsersAssignableRolesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityRoleDtoListResultDto> {
+    public apiIdentityUsersAssignableRolesGet = async (initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityRoleDtoListResultDto> => {
         const response = await this.apiIdentityUsersAssignableRolesGetRaw(initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiIdentityUsersByEmailEmailGetRaw(requestParameters: ApiIdentityUsersByEmailEmailGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityUserDto>> {
+    private apiIdentityUsersByEmailEmailGetRaw = async (requestParameters: ApiIdentityUsersByEmailEmailGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityUserDto>> => {
         if (requestParameters.email === null || requestParameters.email === undefined) {
             throw new runtime.RequiredError('email','Required parameter requestParameters.email was null or undefined when calling apiIdentityUsersByEmailEmailGet.');
         }
@@ -117,14 +117,14 @@ export class UserApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityUsersByEmailEmailGet(requestParameters: ApiIdentityUsersByEmailEmailGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityUserDto> {
+    public apiIdentityUsersByEmailEmailGet = async (requestParameters: ApiIdentityUsersByEmailEmailGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityUserDto> => {
         const response = await this.apiIdentityUsersByEmailEmailGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiIdentityUsersByUsernameUserNameGetRaw(requestParameters: ApiIdentityUsersByUsernameUserNameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityUserDto>> {
+    private apiIdentityUsersByUsernameUserNameGetRaw = async (requestParameters: ApiIdentityUsersByUsernameUserNameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityUserDto>> => {
         if (requestParameters.userName === null || requestParameters.userName === undefined) {
             throw new runtime.RequiredError('userName','Required parameter requestParameters.userName was null or undefined when calling apiIdentityUsersByUsernameUserNameGet.');
         }
@@ -145,14 +145,14 @@ export class UserApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityUsersByUsernameUserNameGet(requestParameters: ApiIdentityUsersByUsernameUserNameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityUserDto> {
+    public apiIdentityUsersByUsernameUserNameGet = async (requestParameters: ApiIdentityUsersByUsernameUserNameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityUserDto> => {
         const response = await this.apiIdentityUsersByUsernameUserNameGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiIdentityUsersGetRaw(requestParameters: ApiIdentityUsersGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityUserDtoPagedResultDto>> {
+    private apiIdentityUsersGetRaw = async (requestParameters: ApiIdentityUsersGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityUserDtoPagedResultDto>> => {
         const queryParameters: any = {};
 
         if (requestParameters.filter !== undefined) {
@@ -185,14 +185,14 @@ export class UserApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityUsersGet(requestParameters: ApiIdentityUsersGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityUserDtoPagedResultDto> {
+    public apiIdentityUsersGet = async (requestParameters: ApiIdentityUsersGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityUserDtoPagedResultDto> => {
         const response = await this.apiIdentityUsersGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiIdentityUsersIdDeleteRaw(requestParameters: ApiIdentityUsersIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    private apiIdentityUsersIdDeleteRaw = async (requestParameters: ApiIdentityUsersIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> => {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiIdentityUsersIdDelete.');
         }
@@ -213,13 +213,13 @@ export class UserApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityUsersIdDelete(requestParameters: ApiIdentityUsersIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    public apiIdentityUsersIdDelete = async (requestParameters: ApiIdentityUsersIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> => {
         await this.apiIdentityUsersIdDeleteRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async apiIdentityUsersIdGetRaw(requestParameters: ApiIdentityUsersIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityUserDto>> {
+    private apiIdentityUsersIdGetRaw = async (requestParameters: ApiIdentityUsersIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityUserDto>> => {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiIdentityUsersIdGet.');
         }
@@ -240,14 +240,14 @@ export class UserApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityUsersIdGet(requestParameters: ApiIdentityUsersIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityUserDto> {
+    public apiIdentityUsersIdGet = async (requestParameters: ApiIdentityUsersIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityUserDto> => {
         const response = await this.apiIdentityUsersIdGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiIdentityUsersIdPutRaw(requestParameters: ApiIdentityUsersIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityUserDto>> {
+    private apiIdentityUsersIdPutRaw = async (requestParameters: ApiIdentityUsersIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityUserDto>> => {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiIdentityUsersIdPut.');
         }
@@ -271,14 +271,14 @@ export class UserApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityUsersIdPut(requestParameters: ApiIdentityUsersIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityUserDto> {
+    public apiIdentityUsersIdPut = async (requestParameters: ApiIdentityUsersIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityUserDto> => {
         const response = await this.apiIdentityUsersIdPutRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiIdentityUsersIdRolesGetRaw(requestParameters: ApiIdentityUsersIdRolesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityRoleDtoListResultDto>> {
+    private apiIdentityUsersIdRolesGetRaw = async (requestParameters: ApiIdentityUsersIdRolesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityRoleDtoListResultDto>> => {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiIdentityUsersIdRolesGet.');
         }
@@ -299,14 +299,14 @@ export class UserApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityUsersIdRolesGet(requestParameters: ApiIdentityUsersIdRolesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityRoleDtoListResultDto> {
+    public apiIdentityUsersIdRolesGet = async (requestParameters: ApiIdentityUsersIdRolesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityRoleDtoListResultDto> => {
         const response = await this.apiIdentityUsersIdRolesGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiIdentityUsersIdRolesPutRaw(requestParameters: ApiIdentityUsersIdRolesPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    private apiIdentityUsersIdRolesPutRaw = async (requestParameters: ApiIdentityUsersIdRolesPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> => {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiIdentityUsersIdRolesPut.');
         }
@@ -330,13 +330,13 @@ export class UserApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityUsersIdRolesPut(requestParameters: ApiIdentityUsersIdRolesPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    public apiIdentityUsersIdRolesPut = async (requestParameters: ApiIdentityUsersIdRolesPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> => {
         await this.apiIdentityUsersIdRolesPutRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async apiIdentityUsersPostRaw(requestParameters: ApiIdentityUsersPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityUserDto>> {
+    private apiIdentityUsersPostRaw = async (requestParameters: ApiIdentityUsersPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityUserDto>> => {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -356,7 +356,7 @@ export class UserApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiIdentityUsersPost(requestParameters: ApiIdentityUsersPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityUserDto> {
+    public apiIdentityUsersPost = async (requestParameters: ApiIdentityUsersPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityUserDto> => {
         const response = await this.apiIdentityUsersPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
