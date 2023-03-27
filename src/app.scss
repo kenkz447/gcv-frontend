@@ -2,9 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-/** FIX Tailwindcss*/
-.tw {
-    &-first-letter\:capitalize:first-letter {
-        text-transform: capitalize;
-    }
-}
+// Blue: rgb(0, 158, 253), 
+// Green: rgb(42, 245, 152);

@@ -5,8 +5,9 @@ const start = () => {
 
     if (module.hot) {
         module.hot.accept(['./src'], () => {
-            const { startup: next } = require('./src');
-            next();
+            // eslint-disable-next-line @typescript-eslint/no-var-requires
+            const { runApp: nextRunApp } = require('./src');
+            nextRunApp();
         });
     }
 };

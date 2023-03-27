@@ -26,8 +26,8 @@ export const DEFAULT_SETTINGS = {
     MENU_PLACEMENT: MENU_PLACEMENT.Horizontal,
     MENU_BEHAVIOR: MENU_BEHAVIOR.Pinned,
     LAYOUT: LAYOUT.Boxed,
-    RADIUS: RADIUS.Rounded,
-    COLOR: THEME_COLOR.LightRed,
+    RADIUS: RADIUS.Standard,
+    COLOR: THEME_COLOR.LightGreen,
     NAV_COLOR: NAV_COLOR.Default,
     USE_SIDEBAR: false,
 };

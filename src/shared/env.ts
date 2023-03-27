@@ -1,3 +1,5 @@
 export const env = {
-    BACKEND_URL
+    BACKEND_URL,
+    NODE_ENV,
 };
+

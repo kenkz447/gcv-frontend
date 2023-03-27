@@ -28,11 +28,13 @@ module.exports = {
     devtool: isProduction ? false : 'eval-source-map',
     plugins: [
         new webpack.DefinePlugin({
+            APP_NAME: JSON.stringify(envConfig.APP_NAME),
             BACKEND_URL: JSON.stringify(envConfig.BACKEND_URL),
+            NODE_ENV: JSON.stringify(process.env.NODE_ENV ?? 'development'),
         }),
         new webpack.ProgressPlugin(),
         new MiniCssExtractPlugin({
-            filename: isProduction ? 'css/[name].[chunkhash].css' : 'main.css'
+            filename: isProduction ? 'css/[name].[chunkhash].css' : 'main.css',
         }),
         new HtmlWebpackPlugin({
             inject: 'body',
@@ -41,7 +43,7 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 { from: 'public', to: 'public' },
-                { from: 'public/robots.txt' }
+                { from: 'public/robots.txt' },
             ],
         }),
     ],
@@ -50,8 +52,8 @@ module.exports = {
             {
                 test: /\.(eot|svg|ttf|woff|woff2|jpe?g|png|gif|svg)$/,
                 use: [{
-                    loader: 'file-loader?name=[name].[ext]'
-                }]
+                    loader: 'file-loader?name=[name].[ext]',
+                }],
             },
             {
                 test: /\.(css|sass|scss)$/,
@@ -64,11 +66,11 @@ module.exports = {
                         options: {
                             sourceMap: true,
                             sassOptions: {
-                                includePaths: [path.resolve(__dirname, 'src')]
-                            }
-                        }
-                    }
-                ]
+                                includePaths: [path.resolve(__dirname, 'src')],
+                            },
+                        },
+                    },
+                ],
             },
             {
                 test: /\.(tsx?|js)$/,
@@ -78,8 +80,8 @@ module.exports = {
                         options: {
                             transpileOnly: true,
                             getCustomTransformers: () => ({ before: [require('ts-nameof')] }),
-                        }
-                    }
+                        },
+                    },
                 ],
                 exclude: /node_modules/,
             },
@@ -95,7 +97,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
         filename: 'main.js',
-        clean: true
+        clean: true,
     },
     devServer: {
         static: '/public',
@@ -103,6 +105,7 @@ module.exports = {
         hot: true,
         port: 8000,
         historyApiFallback: true,
+        liveReload: false,
     },
 };
 
@@ -111,7 +114,7 @@ if (isProduction) {
     module.exports.output.chunkFilename = 'js/[name].[chunkhash].js';
 
     module.exports.plugins.push(new GenerateSW({
-        swDest: 'service-worker.js'
+        swDest: 'service-worker.js',
     }));
 
     module.exports.optimization = {
@@ -125,7 +128,7 @@ if (isProduction) {
                 parallel: true,
                 terserOptions: {
                     sourceMap: false,
-                }
+                },
             }),
         ],
         runtimeChunk: 'single',
@@ -137,18 +140,18 @@ if (isProduction) {
                     priority: -10,
                     chunks: 'all',
                     maxSize: 2440000,
-                    enforce: true
+                    enforce: true,
                 },
                 default: {
                     minChunks: 2,
                     priority: -20,
-                    reuseExistingChunk: true
-                }
-            }
+                    reuseExistingChunk: true,
+                },
+            },
         },
     };
 
     module.exports.performance = {
-        hints: false
-    }
+        hints: false,
+    };
 }

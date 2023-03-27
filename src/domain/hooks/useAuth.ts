@@ -19,6 +19,6 @@ export const useAuth = (role: 'admin' | 'supper-admin') => {
 
     return {
         currentUser,
-        currentRoles
+        currentRoles,
     };
 };

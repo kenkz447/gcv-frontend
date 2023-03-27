@@ -9,7 +9,7 @@ export default function AdminPage() {
     const currentUser = useCurrentUser();
 
     if (!currentUser) {
-        return <Navigate replace={true} to={LOGIN} />
+        return <Navigate replace={true} to={LOGIN} />;
     }
 
     return (

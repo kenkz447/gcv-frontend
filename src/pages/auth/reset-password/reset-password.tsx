@@ -49,7 +49,7 @@ const ResetPassword = () => {
 
   const rightSide = (
     <div className='sw-lg-70 min-h-100 bg-foreground d-flex justify-content-center align-items-center shadow-deep full-page-content-right-border py-5'>
-      <div className='sw-lg-50 px-5'>
+      <div className='sw-lg-50 px-5 tw-w-full'>
         <div className='sh-11'>
           <NavLink href='/'>
             <div className='logo-default' />

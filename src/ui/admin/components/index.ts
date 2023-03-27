@@ -1,3 +1,3 @@
-export * from './ToastManager';
 export * from './display';
-export * from './inputs';
+export * from './form';
+export * from './ToastManager';

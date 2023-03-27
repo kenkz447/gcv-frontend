@@ -36,13 +36,13 @@ const NavLanguageSwitcher = () => {
     }, [attrMenuAnimate, behaviourHtmlData, attrMobile, color]);
 
     return (
-        <div className="language-switch-container">
-            <Dropdown onToggle={onToggle} show={showingNavMenu === MENU_NAME} align="end">
+        <div className='language-switch-container'>
+            <Dropdown align='end' onToggle={onToggle} show={showingNavMenu === MENU_NAME}>
                 <Dropdown.Toggle
-                    variant="empty"
                     className={classNames('language-button', {
                         show: showingNavMenu === MENU_NAME,
                     })}
+                    variant='empty'
                 >
                     {currentLang.code}
                 </Dropdown.Toggle>

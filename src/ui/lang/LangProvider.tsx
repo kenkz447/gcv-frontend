@@ -2,18 +2,19 @@ import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { useSelector } from 'react-redux';
 
-import { State } from '@/domain';
+import { State } from '@/app';
 
-import { messages } from './messages';
+interface LangProviderProps extends React.PropsWithChildren {
+    readonly messages: Record<string, Record<string, string>>;
+}
 
-export function LangProvider({ children }: React.PropsWithChildren) {
-  const { currentLang } = useSelector((state: State) => state.lang);
+export function LangProvider(props: LangProviderProps) {
+    const { currentLang } = useSelector((state: State) => state.lang);
 
-  const selectedMessages = (messages as any)[currentLang.locale];
-
-  return (
-    <IntlProvider locale={currentLang.locale} messages={selectedMessages}>
-      {children}
-    </IntlProvider>
-  );
-};
+    const selectedMessages = props.messages[currentLang.code];
+    return (
+        <IntlProvider locale={currentLang.locale} messages={selectedMessages}>
+            {props.children}
+        </IntlProvider>
+    );
+}

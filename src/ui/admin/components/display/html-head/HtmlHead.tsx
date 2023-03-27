@@ -6,7 +6,7 @@ export const HtmlHead = ({ title = '', description = '', children = null }) => {
         <>
             <Helmet>
                 <title>{title}</title>
-                <meta name='description' content={description} />
+                <meta content={description} name='description' />
             </Helmet>
             {children && children}
         </>

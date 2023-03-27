@@ -29,7 +29,7 @@ export interface ConfigurationParameters {
 }
 
 export class Configuration {
-    constructor(private configuration: ConfigurationParameters = {}) {}
+    constructor(private configuration: ConfigurationParameters = {}) { }
 
     set config(configuration: Configuration) {
         this.configuration = configuration;
@@ -158,8 +158,8 @@ export class BaseAPI {
             ...overriddenInit,
             body:
                 isFormData(overriddenInit.body) ||
-                overriddenInit.body instanceof URLSearchParams ||
-                isBlob(overriddenInit.body)
+                    overriddenInit.body instanceof URLSearchParams ||
+                    isBlob(overriddenInit.body)
                     ? overriddenInit.body
                     : JSON.stringify(overriddenInit.body),
         };
@@ -193,11 +193,11 @@ export class BaseAPI {
                 }
             }
             if (response === undefined) {
-              if (e instanceof Error) {
-                throw new FetchError(e, 'The request failed and the interceptors did not return an alternative response');
-              } else {
-                throw e;
-              }
+                if (e instanceof Error) {
+                    throw new FetchError(e, 'The request failed and the interceptors did not return an alternative response');
+                } else {
+                    throw e;
+                }
             }
         }
         for (const middleware of this.middleware) {
@@ -211,7 +211,7 @@ export class BaseAPI {
             }
         }
         return response;
-    }
+    };
 
     /**
      * Create a shallow clone of `this` by constructing a new instance
@@ -265,13 +265,13 @@ export type FetchAPI = WindowOrWorkerGlobalScope['fetch'];
 
 export type Json = any;
 export type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' | 'OPTIONS' | 'HEAD';
-export type HTTPHeaders = { [key: string]: string };
-export type HTTPQuery = { [key: string]: string | number | null | boolean | Array<string | number | null | boolean> | Set<string | number | null | boolean> | HTTPQuery };
+export type HTTPHeaders = { [key: string]: string; };
+export type HTTPQuery = { [key: string]: string | number | null | boolean | Array<string | number | null | boolean> | Set<string | number | null | boolean> | HTTPQuery; };
 export type HTTPBody = Json | FormData | URLSearchParams;
-export type HTTPRequestInit = { headers?: HTTPHeaders; method: HTTPMethod; credentials?: RequestCredentials; body?: HTTPBody };
+export type HTTPRequestInit = { headers?: HTTPHeaders; method: HTTPMethod; credentials?: RequestCredentials; body?: HTTPBody; };
 export type ModelPropertyNaming = 'camelCase' | 'snake_case' | 'PascalCase' | 'original';
 
-export type InitOverrideFunction = (requestContext: { init: HTTPRequestInit, context: RequestOpts }) => Promise<RequestInit>
+export type InitOverrideFunction = (requestContext: { init: HTTPRequestInit, context: RequestOpts; }) => Promise<RequestInit>;
 
 export interface FetchParams {
     url: string;
@@ -365,7 +365,7 @@ export interface ResponseTransformer<T> {
 }
 
 export class JSONApiResponse<T> {
-    constructor(public raw: Response, private transformer: ResponseTransformer<T> = (jsonValue: any) => jsonValue) {}
+    constructor(public raw: Response, private transformer: ResponseTransformer<T> = (jsonValue: any) => jsonValue) { }
 
     async value(): Promise<T> {
         return this.transformer(await this.raw.json());
@@ -373,7 +373,7 @@ export class JSONApiResponse<T> {
 }
 
 export class VoidApiResponse {
-    constructor(public raw: Response) {}
+    constructor(public raw: Response) { }
 
     async value(): Promise<void> {
         return undefined;
@@ -381,7 +381,7 @@ export class VoidApiResponse {
 }
 
 export class BlobApiResponse {
-    constructor(public raw: Response) {}
+    constructor(public raw: Response) { }
 
     async value(): Promise<Blob> {
         return await this.raw.blob();
@@ -389,7 +389,7 @@ export class BlobApiResponse {
 }
 
 export class TextApiResponse {
-    constructor(public raw: Response) {}
+    constructor(public raw: Response) { }
 
     async value(): Promise<string> {
         return await this.raw.text();

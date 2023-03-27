@@ -1,12 +1,12 @@
 import React from 'react';
 import { Toast } from 'react-bootstrap';
-import ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 
 interface ToastOptions {
     id?: string;
-    title: string;
+    title?: string;
     content: string;
-    type?: 'primary' | 'info' | 'warning' | 'error'
+    type?: 'primary' | 'info' | 'warning' | 'error';
     duration?: number;
     destroy?: () => void;
 }
@@ -44,23 +44,25 @@ export class ToastManager {
     private render(): void {
         const toastsList = this.toasts.map((toastProps: ToastOptions) => (
             <Toast
-                key={toastProps.id}
-                onClose={() => this.destroy(toastProps.id)}
-                delay={10000}
                 autohide={true}
                 bg={toastProps.type}
+                delay={10000}
+                key={toastProps.id}
+                onClose={() => this.destroy(toastProps.id)}
             >
                 {
                     toastProps.title && (
                         <Toast.Header>
-                            <strong className="me-auto">{toastProps.title}</strong>
+                            <strong className='me-auto'>{toastProps.title}</strong>
                         </Toast.Header>
                     )
                 }
                 <Toast.Body>{toastProps.content}</Toast.Body>
             </Toast>
         ));
-        ReactDOM.render(toastsList, this.containerRef);
+
+        const container = ReactDOMClient.createRoot(this.containerRef);
+        container.render(toastsList);
     }
 }
 

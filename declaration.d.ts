@@ -8,4 +8,6 @@ declare module '*.scss' {
     export default content;
 }
 
+declare const APP_NAME: string;
 declare const BACKEND_URL: string;
+declare const NODE_ENV: 'production' | 'development';

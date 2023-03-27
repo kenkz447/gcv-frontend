@@ -1,9 +1,14 @@
 
 import { AccountApi, Configuration, LoginApi, MediaFilesApi, UserApi } from '@/services/backend/api';
 import { env } from '@/shared/env';
-import { toast } from '@/ui/admin';
 
 export * from './api/models';
+import { FetchError, ResponseError } from './api/runtime';
+
+export {
+    FetchError,
+    ResponseError,
+};
 
 export const backendConfig = new Configuration({
     basePath: env.BACKEND_URL,
@@ -15,10 +20,6 @@ export const backendConfig = new Configuration({
             return context;
         },
         onError: async (context) => {
-            toast.show({
-                content: context.error.toString(),
-                type: 'warning',
-            });
             return context.response;
         },
     }],

@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 apis/AbpApiDefinitionApi.ts
 apis/AbpApplicationConfigurationApi.ts
 apis/AbpApplicationLocalizationApi.ts
